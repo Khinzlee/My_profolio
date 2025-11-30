@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+    <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        color: #ededed;
+        background: #081c29;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 10%;
+        background: #07122c;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+      }
+
+      .logo {
+        position: relative;
+        font-size: 30px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: default;
+        opacity: 0;
+        animation: slideRight 1s ease forwards;
+      }
+
+      .navbar a {
+        display: inline-block;
+        font-size: 25px;
+        color: #fff;
+        text-decoration: none;
+        margin-left: 35px;
+        font-weight: 500;
+        transition: 0.3s ease;
+        animation: slideTop 0.5s ease forwards;
+        animation-delay: calc(0.2s * var(--i));
+      }
+      .navbar a:hover {
+        color: #0efff5;
+      }
+      .home {
+        position: relative;
+        width: 100%;
+        justify-content: space-between;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 70px 10% 0;
+      }
+      .home-content {
+        max-width: 600px;
+      }
+
+      .home-content h3 {
+        font-size: 32px;
+        font-weight: 700;
+        opacity: 0;
+        animation: slidebottom 1s ease forwards;
+        animation-delay: 0.7s;
+      }
+
+      .home-content .sec {
+        margin-bottom: 30px;
+        animation: slideTop 1s ease forwards;
+        animation-delay: 0.7s;
+      }
+
+      .home-content h3 span {
+        color: #0efff5;
+      }
+      .home-content h1 {
+        font-size: 56px;
+        font-weight: 700;
+        margin: -3px 0;
+        opacity: 0;
+        animation: slideRight 1s ease forwards;
+        animation-delay: 1s;
+      }
+
+      .home-content p {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 15px 0 0;
+        line-height: 1.5;
+        opacity: 0;
+        animation: slideLeft 1s ease forwards;
+      }
+
+      .home-sci a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 2px solid #0efff5;
+        border-radius: 50%;
+        font-size: 20px;
+        text-decoration: none;
+        color: #0efff5;
+        transition: 0.5s ease;
+        opacity: 0;
+        animation: slideLeft 1s ease forwards;
+        animation-delay: calc(0.2s * var(--i));
+        margin: 30px 15px 30px 0;
+      }
+
+      .home-sci a:hover {
+        background: #0efff5;
+        color: #081c29;
+        box-shadow: 0 0 20px #0efff5;
+      }
+
+      .btn-box {
+        display: inline-block;
+        padding: 12px 28px;
+        background: #0efff5;
+        color: #081b29;
+        font-size: 20px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 40px;
+        letter-spacing: 1px;
+        transition: 0.4s ease;
+        opacity: 0;
+        animation: slideTop 2s ease forwards;
+        animation-delay: 2s;
+      }
+
+      .btn-box:hover {
+        background: transparent;
+        color: #0efff5;
+        border: 2px solid #0efff5;
+      }
+
+      .profile {
+        position: relative;
+        max-width: 400px;
+        width: 100%;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 60px #0efff5;
+        border: 10px solid #fff;
+        opacity: 0;
+        animation: slideToppy 2s ease forwards;
+        animation-delay: 0.2s;
+      }
+
+      .con {
+        position: absolute;
+        width: 360px;
+        height: 360px;
+        background: url("images/Gboyega.jpg") no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        box-shadow: 0 0 0 5px #0efff5, 0 0 20px #0efff5, 0 0 40px #0efff5,
+          0 0 60px #0efff5;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      @keyframes slideRight {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideTop {
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideToppy {
+        0% {
+          transform: translateY(200px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slidebottom {
+        0% {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideLeft {
+        0% {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+
+      .about-img {
+        position: relative;
+        max-width: 300px;
+        width: 100%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 60px #0efff5;
+        border: 10px solid #fff;
+        left: 30%;
+      }
+
+      .know {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        background: url("images/Gboyega.jpg") no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        box-shadow: 0 0 0 5px #0efff5, 0 0 20px #0efff5, 0 0 40px #0efff5,
+          0 0 60px #0efff5;
+      }
+
+      .about-text h2 {
+        font-size: 60px;
+        font-weight: 600;
+      }
+
+      .about-text h2 span {
+        color: #0efff5;
+      }
+
+      .about-text h4 {
+        font-size: 29px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.7;
+        margin: 15px 0 30px;
+      }
+
+      .about-text p {
+        color: aliceblue;
+        font-size: 20px;
+        line-height: 1.4;
+        margin-bottom: 3rem;
+      }
+
+      .services {
+        color: aliceblue;
+        font-size: 20px;
+        line-height: 1.4;
+        margin-bottom: 4rem;
+      }
+
+      .sub-title {
+        text-align: center;
+        font-size: 60px;
+        padding-bottom: 70px;
+        margin-top: 70px;
+      }
+
+      .sub-title span {
+        color: #00eeff;
+      }
+
+      .services-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+        grid-gap: 40px;
+        margin-top: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+
+      .services-list div {
+        background-color: transparent;
+        padding: 40px;
+        font-size: 13px;
+        font-weight: 13px;
+        border-right: 10px;
+        border-radius: 20px;
+        transition: background 0.5s, transform 0.5s;
+        box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0101f2dd;
+        opacity: 0;
+        animation: slidebottom 2s ease forwards;
+        animation-delay: 1s;
+      }
+
+      .services-list div:hover {
+        transform: translateY(-10px);
+      }
+
+      .services-list div ion-icon {
+        font-size: 50px;
+        margin-bottom: 30px;
+        color: #0efff5;
+      }
+
+      .services-list div h2 {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+
+      .services-list div a {
+        text-decoration: none;
+        color: #000000;
+        font-size: 12px;
+        margin-top: 20px;
+        display: inline-block;
+      }
+
+      .read {
+        display: inline-block;
+        padding: 12px 28px;
+        background: #0efff5;
+        border-radius: 40px;
+        font-size: 16px;
+        color: #081b29;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-weight: 600;
+        opacity: 0;
+        animation: slideTop 2s ease forwards;
+        animation-delay: 2s;
+      }
+
+      .read:hover {
+        background: transparent;
+        color: #0efff5;
+        border: 2px solid #0efff5;
+      }
+
+      .container {
+        padding: 90px;
+      }
+
+      .main-text {
+        padding-top: 130px;
+        margin-top: 10px;
+      }
+
+      .main-text h2 {
+        font-size: 60px;
+        line-height: 1;
+        text-align: center;
+      }
+
+      .main-text h2 span {
+        color: #0efff5;
+      }
+
+      .portfolio-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(359px, auto));
+        margin-left: 2%;
+        margin-right: 2%;
+        grid-gap: 0.1%;
+        margin-top: 2%;
+      }
+
+      .row {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .row img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+        transition: transform 0.5s;
+      }
+
+      .layer {
+        width: 100%;
+        height: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.1), #0efff5);
+        position: absolute;
+        border-radius: 8px;
+        left: 0;
+        bottom: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 40px;
+        transition: height 0.5s;
+      }
+
+      .layer h5 {
+        color: #000000;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .layer p {
+        color: #000;
+        line-height: 1.8;
+        font-size: 1rem;
+      }
+
+      .layer ion-icon {
+        color: #ff004f;
+        margin-top: 20px;
+        font-size: 20px;
+        background: #fff;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .row:hover img {
+        transform: scale(1.1);
+      }
+
+      .row:hover .layer {
+        height: 100%;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 3rem;
+        padding-left: 30px;
+        margin-top: 130px;
+      }
+
+      .contact-text h2 {
+        font-size: 90px;
+        line-height: 1;
+        text-align: center;
+      }
+
+      .contact-text h2 span {
+        color: #0efff5;
+      }
+
+      .contact-text h4 {
+        margin: 15px 0;
+        color: rgb(228, 228, 228);
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .contact-text p {
+        color: rgb(177, 177, 177);
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 2rem;
+      }
+
+      .contact-list {
+        margin-bottom: 3rem;
+      }
+
+      .contact-list li {
+        margin-bottom: 10px;
+        display: block;
+      }
+      .contact-list li ion-icon {
+        margin-right: 10px;
+        color: #0efff5;
+        font-size: 20px;
+        vertical-align: middle;
+      }
+
+      .contact-list li a:hover {
+        transform: scale(1.01) translateY(-5px);
+        color: #0efff5;
+      }
+
+      .contact-icons a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 2px solid #0efff5;
+        border-radius: 50%;
+        font-size: 20px;
+        text-decoration: none;
+        color: #0efff5;
+        transition: 0.5s ease;
+        opacity: 0;
+        animation: slideLeft 1s ease forwards;
+        animation-delay: calc(0.2s * var(--i));
+        margin: 30px 15px 30px 0;
+      }
+
+      .contact-icons a:hover {
+        background: #0efff5;
+        color: #081c29;
+        box-shadow: 0 0 20px #0efff5;
+      }
+
+      .contact-form form {
+        position: relative;
+      }
+
+      .contact-form form input,
+      form textarea {
+        border: none;
+        outline: none;
+        width: 90%;
+        padding: 18px;
+        background: #55555557;
+        color: #000;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem;
+      }
+
+      .contact-form textarea {
+        resize: none;
+        height: 220px;
+      }
+
+      .contact-form form .send {
+        display: inline-block;
+        padding: 14px 60px;
+        background: #0efff5;
+        border-radius: 40px;
+        font-size: 18px;
+        color: #081b29;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-weight: 600;
+        opacity: 0;
+        animation: slideTop 2s ease forwards;
+        animation-delay: 2s;
+      }
+
+      .contact-form form .send:hover {
+        background: transparent;
+        color: #0efff5;
+        border: 2px solid #0efff5;
+      }
+
+      .last-text p {
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        background: rgb(7, 85, 91);
+        font-weight: 300;
+        margin-top: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo"> Portfolio.</a>
+
+      <nav class="navbar">
+        <a href="#home" style="--i: 1">Home</a>
+        <a href="#about" style="--i: 2">About</a>
+        <a href="#services" style="--i: 3">Services</a>
+        <a href="#portfolio" style="--i: 4">Portfolio</a>
+        <a href="#contact" style="--i: 5">Contact</a>
+      </nav>
+    </header>
+
+    <section class="home" id="home">
+      <div class="home-content">
+        <h3>Hello, It's me,</h3>
+        <h1><span class="type"></span></h1>
+        <h3 class="sec">And I'm a <span>Front-end Developer.</span></h3>
+        <p>
+          I'm a Web designer with extensive experience for over 3 months.
+          <br />expertise is to create beautiful and functional websites,
+          frontend end development and many more .......
+        </p>
+        <div class="home-sci">
+          <a
+            href="https://web.facebook.com/kingsley.opakunle/?_rdc=1&_rdr#"
+            style="--i: 7"
+            ><ion-icon name="logo-facebook"></ion-icon
+          ></a>
+          <a href="#" style="--i: 8"
+            ><ion-icon name="logo-instagram"></ion-icon
+          ></a>
+          <a href="https://wa.link/pgyf7u" style="--i: 9"
+            ><ion-icon name="logo-whatsapp"></ion-icon
+          ></a>
+          <a href="https://www.tiktok.com/@khinzlee_sax" style="--i: 10"
+            ><ion-icon name="logo-tiktok"></ion-icon
+          ></a>
+          <a
+            href="https://x.com/khinzlee188099?t=YaKW7-C8C-3f-M92FpzZJg&s=09"
+            style="--i: 11"
+            ><ion-icon name="logo-twitter"></ion-icon
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/kingsley-opakunle-342794310/"
+            style="--i: 12"
+            ><ion-icon name="logo-linkedin"></ion-icon
+          ></a>
+        </div>
+        <a href="#" class="btn-box">More about Me</a>
+      </div>
+
+      <div class="profile">
+        <div class="con"></div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-img">
+        <span class="know"></span>
+      </div>
+
+      <div class="about-text">
+        <h2>About <span>Me</span></h2>
+        <h4>Front-end developer!</h4>
+        <p>
+          I am a passionate Front-End Developer with a strong focus on creating
+          modern, responsive, and user-friendly web applications. I enjoy
+          turning ideas into interactive digital experiences using clean code,
+          sleek designs, and best practices in web development. With experience
+          in HTML, CSS, JavaScript, and frameworks like Angular/React, I
+          specialize in building visually appealing interfaces that not only
+          look great but also deliver smooth functionality across devices.
+          Beyond coding, I have an eye for UI/UX design, ensuring that every
+          project I work on balances performance with aesthetics. I’m
+          continuously learning new technologies and refining my skills to stay
+          updated with the fast-paced world of web development. My goal is to
+          craft websites and applications that leave a lasting impact while
+          helping businesses and individuals bring their digital visions to
+          life.
+        </p>
+        <a href="#" class="btn-box">More about Me</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="services" id="services">
+        <div class="cointainer">
+          <h1 class="sub-title">My <span>Services</span></h1>
+          <div class="services-list">
+            <div>
+              <ion-icon name="code-slash-outline"></ion-icon>
+
+              <h2>Front-end Development</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                sapiente nesciunt voluptate voluptatum at voluptatibus in eum,
+                corrupti sed fugit, est iusto placeat voluptates repellendus
+                possimus minus repudiandae. Consectetur, molestiae.
+              </p>
+              <a href="#" class="read">learn more</a>
+            </div>
+            <div>
+              <ion-icon name="crop-outline"></ion-icon>
+
+              <h2>Front-end Development</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                sapiente nesciunt voluptate voluptatum at voluptatibus in eum,
+                corrupti sed fugit, est iusto placeat voluptates repellendus
+                possimus minus repudiandae. Consectetur, molestiae.
+              </p>
+              <a href="#" class="read">learn more</a>
+            </div>
+            <div>
+              <ion-icon name="logo-apple"></ion-icon>
+
+              <h2>Front-end Development</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                sapiente nesciunt voluptate voluptatum at voluptatibus in eum,
+                corrupti sed fugit, est iusto placeat voluptates repellendus
+                possimus minus repudiandae. Consectetur, molestiae.
+              </p>
+              <a href="#" class="read">learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="portfolio" id="portfolio">
+        <div class="main-text" id="project">
+          <h2>Latest <span>Project</span></h2>
+
+          <div class="portfolio-content">
+            <div class="row">
+              <img src="images/slide3.png" alt="" />
+              <div class="layer">
+                <h5>Front-end Development</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                  quos cupiditate iusto ullam, maxime ex accusamus magni
+                  deserunt veritatis sint. Ratione, iste! Dolor architecto ullam
+                  reprehenderit eos repellat rerum totam?
+                </p>
+                <a href=""><ion-icon name="open-outline"></ion-icon> </a>
+              </div>
+            </div>
+
+            <div class="row">
+              <img src="images/slide3.png" alt="" />
+              <div class="layer">
+                <h5>Front-end Development</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                  quos cupiditate iusto ullam, maxime ex accusamus magni
+                  deserunt veritatis sint. Ratione, iste! Dolor architecto ullam
+                  reprehenderit eos repellat rerum totam?
+                </p>
+                <a href=""><ion-icon name="open-outline"></ion-icon> </a>
+              </div>
+            </div>
+
+            <div class="row">
+              <img src="images/slide3.png" alt="" />
+              <div class="layer">
+                <h5>Front-end Development</h5>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+                  quos cupiditate iusto ullam, maxime ex accusamus magni
+                  deserunt veritatis sint. Ratione, iste! Dolor architecto ullam
+                  reprehenderit eos repellat rerum totam?
+                </p>
+                <a href=""><ion-icon name="open-outline"></ion-icon> </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-text">
+        <h2>Contact <span>Me</span></h2>
+        <h4>Let's work Together</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+          dolore a inventore? Fugit at ab natus dolores cumque? Quaerat optio
+          cupiditate nostrum omnis beatae incidunt quibusdam veritatis eaque,
+          amet quam.
+        </p>
+        <div class="contact-list">
+          <li>
+            <ion-icon name="mail-outline"></ion-icon> Email:
+            kingsleyopakunle@gmail.com
+          </li>
+          <li>
+            <ion-icon name="call-outline"></ion-icon> Phone number:
+            +2349030772918
+          </li>
+        </div>
+
+        <div class="contact-icons">
+          <a
+            href="https://web.facebook.com/kingsley.opakunle/?_rdc=1&_rdr#"
+            style="--i: 7"
+            ><ion-icon name="logo-facebook"></ion-icon
+          ></a>
+          <a href="#" style="--i: 8"
+            ><ion-icon name="logo-instagram"></ion-icon
+          ></a>
+          <a href="https://wa.link/pgyf7u" style="--i: 9"
+            ><ion-icon name="logo-whatsapp"></ion-icon
+          ></a>
+          <a href="https://www.tiktok.com/@khinzlee_sax" style="--i: 10"
+            ><ion-icon name="logo-tiktok"></ion-icon
+          ></a>
+          <a
+            href="https://x.com/khinzlee188099?t=YaKW7-C8C-3f-M92FpzZJg&s=09"
+            style="--i: 11"
+            ><ion-icon name="logo-twitter"></ion-icon
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/kingsley-opakunle-342794310/"
+            style="--i: 12"
+            ><ion-icon name="logo-linkedin"></ion-icon
+          ></a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="">
+          <input type="" placeholder="Enter Your Name" required />
+          <input type="email" name="" placeholder="Enter Your Email" required />
+
+          <input type="" placeholder="Enter Your Subject" required />
+          <textarea
+            name=""
+            id=""
+            cols="40"
+            rows="10"
+            placeholder="Enter Your Message"
+            required
+          ></textarea>
+          <input type="submit" value="submit" class="send" />
+        </form>
+      </div>
+    </section>
+
+    <div class="last-text">
+      <p>Developed by Opakunle Kingsley @2025</p>
+    </div>
+
+    <script>
+      var typed = new Typed(".type", {
+        strings: ["Opakunle Kingsley."],
+        typeSpeed: 100,
+        backSpeed: 100,
+        startDelay: 1500,
+        backDelay: 1000,
+        deleteSpeed: 50,
+        loop: true,
+      });
+    </script>
+  </body>
+</html>
